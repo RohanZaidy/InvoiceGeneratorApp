@@ -2,10 +2,126 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>InvoiceGeneratorApp</title>
+  <title>Invoice Generator</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  
+  <!-- jsPDF (Updated CDN) -->
+  <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+  
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    .card {
+      border-radius: 10px;
+      border: none;
+    }
+    
+    .btn {
+      border-radius: 6px;
+    }
+    
+    .form-control, .form-select {
+      border-radius: 6px;
+      border: 1px solid #ced4da;
+    }
+    
+    .form-control:focus, .form-select:focus {
+      border-color: #0d6efd;
+      box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+    }
+    
+    .text-primary {
+      color: #0d6efd !important;
+    }
+    
+    .bg-primary {
+      background-color: #0d6efd !important;
+    }
+    
+    .bg-success {
+      background-color: #198754 !important;
+    }
+    
+    .btn-primary {
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+    }
+    
+    .btn-success {
+      background-color: #198754;
+      border-color: #198754;
+    }
+    
+    .btn-outline-primary {
+      color: #0d6efd;
+      border-color: #0d6efd;
+    }
+    
+    .btn-outline-primary:hover {
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+    }
+    
+    @media (max-width: 768px) {
+      .container-fluid {
+        padding: 10px;
+      }
+      
+      .col-lg-6 {
+        margin-bottom: 20px;
+      }
+      
+      .row .col-md-6, .row .col-md-3, .row .col-md-2 {
+        margin-bottom: 15px;
+      }
+    }
+    
+    /* Print styles */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      
+      #invoice-content, #invoice-content * {
+        visibility: visible;
+      }
+      
+      #invoice-content {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+      
+      .card-header {
+        display: none !important;
+      }
+    }
+    
+    /* Animation for smooth transitions */
+    .card {
+      transition: all 0.3s ease;
+    }
+    
+    .btn {
+      transition: all 0.2s ease;
+    }
+    
+    .form-control:focus {
+      transition: all 0.2s ease;
+    }
+  </style>
 </head>
 <body>
   <app-root></app-root>
